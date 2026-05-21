@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Review Result — Gemini Code Reviewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css" />
+  <link rel="stylesheet" href="/static/css/review.css" />
+</head>
+<body>
+
+  <div class="noise"></div>
+
+  <header class="header">
+    <div class="header-logo">
+      <span class="logo-mark">G</span>
+      <span class="logo-text">Gemini<em>Review</em></span>
+    </div>
+    <div class="header-tag">AI-Powered · Code Analysis</div>
+  </header>
+
+  <main class="main result-main">
+
+    <!-- Top bar -->
+    <div class="result-topbar">
+      <a href="/" class="btn-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+        Review another
+      </a>
+      <div class="result-lang-badge">
+        <span class="badge-dot"></span>
+        {{ language }}
+      </div>
+    </div>
+
+    <!-- Page title -->
+    <div class="result-hero">
+      <p class="hero-eyebrow">// analysis complete</p>
+      <h1 class="result-title">Code <span class="hero-accent">Review</span></h1>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="result-grid">
+
+      <!-- Your code -->
+      <section class="result-card" id="codeCard">
+        <div class="card-header">
+          <div class="card-header-left">
+            <span class="card-num">01</span>
+            <span class="card-label">Your Code</span>
+          </div>
+          <div class="card-actions">
+            <span class="lang-chip">{{ language }}</span>
+            <button class="copy-btn" id="copyCode" title="Copy code">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+        </div>
+        <div class="code-wrap">
+          <div class="code-line-nums" id="codeLineNums" aria-hidden="true"></div>
+          <pre class="code-block" id="codeBlock">{{ code }}</pre>
+        </div>
+      </section>
+
+      <!-- Feedback -->
+      <section class="result-card" id="feedbackCard">
+        <div class="card-header">
+          <div class="card-header-left">
+            <span class="card-num">02</span>
+            <span class="card-label">Gemini Feedback</span>
+          </div>
+          <div class="card-actions">
+            <button class="copy-btn" id="copyFeedback" title="Copy feedback">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+        </div>
+        <div class="feedback-body" id="feedbackBody">
+          <pre class="feedback-pre" id="feedbackPre">{{ feedback }}</pre>
+        </div>
+      </section>
+
+    </div><!-- /.result-grid -->
+
+    <!-- Footer CTA -->
+    <div class="result-cta">
+      <a href="/" class="btn-review">
+        <span class="btn-text">Review Another</span>
+        <span class="btn-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+        </span>
+      </a>
+      <p class="submit-hint">Powered by Gemini AI</p>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <span>Gemini Code Reviewer</span>
+    <span class="footer-dot">·</span>
+    <span>Built with Google Gemini</span>
+  </footer>
+
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+  <script src="/static/js/review.js"></script>
+</body>
+</html>

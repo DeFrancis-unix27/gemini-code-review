@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gemini Code Reviewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+ 
+  <div class="noise"></div>
+ 
+  <header class="header">
+    <div class="header-logo">
+      <span class="logo-mark">G</span>
+      <span class="logo-text">Gemini-<i>Code</i>-<em>Review</em></span>
+    </div>
+    <div class="header-tag">AI-Powered · Code Analysis</div>
+  </header>
+ 
+  <main class="main">
+    <div class="hero">
+      <p class="hero-eyebrow">// paste. review. improve.</p>
+      <h1 class="hero-title">
+        Code<br>
+        <span class="hero-accent">Reviewer</span>
+      </h1>
+      <p class="hero-desc">Drop your code below. Gemini will analyze it for bugs, style, performance, and improvements.</p>
+    </div>
+ 
+    <form class="form" action="/review" method="post" id="reviewForm">
+ 
+      <div class="form-field" id="langField">
+        <label class="form-label" for="language">
+          <span class="label-num">01</span>
+          Programming Language
+        </label>
+        <div class="input-wrap">
+          <input
+            type="text"
+            id="language"
+            name="language"
+            class="form-input"
+            placeholder="e.g. Python, JavaScript, Go…"
+            autocomplete="off"
+            required
+          />
+          <div class="input-line"></div>
+        </div>
+        <div class="lang-pills" id="langPills">
+          <button type="button" class="pill" data-lang="Python">Python</button>
+          <button type="button" class="pill" data-lang="JavaScript">JavaScript</button>
+          <button type="button" class="pill" data-lang="TypeScript">TypeScript</button>
+          <button type="button" class="pill" data-lang="Go">Go</button>
+          <button type="button" class="pill" data-lang="Rust">Rust</button>
+          <button type="button" class="pill" data-lang="Java">Java</button>
+          <button type="button" class="pill" data-lang="C++">C++</button>
+          <button type="button" class="pill" data-lang="PHP">PHP</button>
+        </div>
+      </div>
+ 
+      <div class="form-field" id="codeField">
+        <label class="form-label" for="code">
+          <span class="label-num">02</span>
+          Paste Your Code
+        </label>
+        <div class="textarea-wrap">
+          <div class="line-numbers" id="lineNumbers" aria-hidden="true"></div>
+          <textarea
+            id="code"
+            name="code"
+            class="form-textarea"
+            rows="18"
+            placeholder="# Paste your code here…"
+            spellcheck="false"
+            required
+          ></textarea>
+        </div>
+        <div class="textarea-footer">
+          <span class="char-count" id="charCount">0 characters</span>
+          <span class="line-count" id="lineCount">0 lines</span>
+        </div>
+      </div>
+ 
+      <div class="form-submit">
+        <button type="submit" class="btn-review" id="submitBtn">
+          <span class="btn-text">Review Code</span>
+          <span class="btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </span>
+          <span class="btn-loader" id="btnLoader">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+        <p class="submit-hint">Powered by Gemini AI · Results appear below</p>
+      </div>
+ 
+    </form>
+  </main>
+ 
+  <footer class="footer">
+    <span>Gemini Code Reviewer</span>
+    <span class="footer-dot">·</span>
+    <span>Built with Google Gemini</span>
+  </footer>
+ 
+  <script src="/static/js/scripts.js"></script>
+</body>
+</html>
